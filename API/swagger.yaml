@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: API de Posts de Fútbol
+  description: API para manejar posts relacionados con el fútbol.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+
+paths:
+  /getAllPosts:
+    get:
+      summary: Obtener todos los posts
+      responses:
+        '200':
+          description: Lista de posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    titulo:
+                      type: string
+                      example: "Título del post"
+                    descripcion:
+                      type: string
+                      example: "Descripción del post"
+                    imagen:
+                      type: string
+                      example: "URL de la imagen"
+                    autor:
+                      type: string
+                      example: "Autor del post"
+        '500':
+          description: Error interno del servidor
+
+  /getPostById/{id}:
+    get:
+      summary: Obtener un post por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID del post
+      responses:
+        '200':
+          description: Detalle del post
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  titulo:
+                    type: string
+                    example: "Título del post"
+                  descripcion:
+                    type: string
+                    example: "Descripción del post"
+                  imagen:
+                    type: string
+                    example: "URL de la imagen"
+                  autor:
+                    type: string
+                    example: "Autor del post"
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+
+  /deletePostById/{id}:
+    delete:
+      summary: Eliminar un post por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID del post
+      responses:
+        '200':
+          description: Post eliminado correctamente
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+
+  /updatePostById/{id}:
+    put:
+      summary: Actualizar un post por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID del post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                  example: "Nuevo título"
+                descripcion:
+                  type: string
+                  example: "Nueva descripción"
+                imagen:
+                  type: string
+                  example: "Nueva URL de la imagen"
+                autor:
+                  type: string
+                  example: "Nuevo autor"
+      responses:
+        '200':
+          description: Post actualizado correctamente
+        '400':
+          description: Formato de datos incorrecto
+        '404':
+          description: Post no encontrado
+        '500':
+          description: Error interno del servidor
+
+  /addPost:
+    post:
+      summary: Añadir un nuevo post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                  example: "Título del post"
+                descripcion:
+                  type: string
+                  example: "Descripción del post"
+                imagen:
+                  type: string
+                  example: "URL de la imagen"
+                autor:
+                  type: string
+                  example: "Autor del post"
+      responses:
+        '201':
+          description: Post añadido correctamente
+        '400':
+          description: Formato de datos incorrecto
+        '500':
+          description: Error interno del servidor

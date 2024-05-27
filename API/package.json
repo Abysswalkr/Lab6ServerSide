@@ -1,0 +1,43 @@
+{
+  "name": "lab-5-server-side-javascript",
+  "version": "1.0.0",
+  "description": "The api for blog in react",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js",
+    "lint": "eslint src/*js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andyfer004/Lab-5-Server-Side-Javascript.git"
+  },
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "author": "Andy Fuentes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Andyfer004/Lab-5-Server-Side-Javascript/issues"
+  },
+  "homepage": "https://github.com/Andyfer004/Lab-5-Server-Side-Javascript#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7",
+    "swagger": "^0.7.5",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-custom": "^0.0.6",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.1.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}
